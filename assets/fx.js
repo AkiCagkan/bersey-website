@@ -11,14 +11,16 @@
 
   /* ── Teknik ızgara enjeksiyonu (page-hero) ── */
   document.querySelectorAll('.page-hero').forEach(function (h) {
+    if (h.hasAttribute('data-scrub')) return; /* scrub hero: video katmanı var */
     var d = document.createElement('div'); d.className = 'techgrid';
     var wrap = h.querySelector('.wrap');
-    if (wrap) h.insertBefore(d, wrap); else h.appendChild(d);
+    if (wrap && wrap.parentNode === h) h.insertBefore(d, wrap); else h.appendChild(d);
   });
 
   /* ── Hero paralaks ── */
   if (hasGsap && !reduced) {
     document.querySelectorAll('.page-hero .bgimg').forEach(function (bg) {
+      if (bg.closest('[data-scrub]')) return; /* scrub hero kendi hareketini yönetir */
       gsap.to(bg, { yPercent: 16, ease: 'none',
         scrollTrigger: { trigger: bg.closest('.page-hero'), start: 'top top', end: 'bottom top', scrub: true } });
     });

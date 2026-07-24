@@ -12,6 +12,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css">
 <script src="../assets/langswitch.js" defer></script>
+<script src="../assets/scrubfx.js" defer></script>
+<link rel="stylesheet" href="../assets/scrub.css">
 </head><body>
 <div id="progress"></div>
 <header>
@@ -31,14 +33,24 @@
 
 <main>
 
-<section class="page-hero tall">
+<section class="page-hero tall" data-scrub data-scrub-src="../v2/frames/frame_" data-scrub-count="121">
+  <div class="scrub-pin">
   <div class="bgimg" style="background-image:url(../assets/images/banners/pages/energy.jpg)"></div>
-  <div class="hero-3d" data-scrolly data-model3d="boiler"></div>
-  <div class="wrap">
+  <canvas class="scrub-canvas" aria-hidden="true"></canvas>
+  <div class="scrub-scrim"></div>
+  <div class="wrap" data-scrub-fade>
     <div class="breadcrumb"><a href="index.html">Home</a><span>&rsaquo;</span> Products <span>&rsaquo;</span> Energy Generation</div>
     <div class="eyebrow">Energy Generation Systems</div>
     <h1>Energy Generation Systems</h1>
-    <p class="sub">Complete boiler and heat generation systems for your industrial energy needs</p>
+    <p class="sub">Scroll — watch our thermal oil boiler come apart piece by piece. Complete boiler and heat generation systems for your industrial energy needs.</p>
+  </div>
+  <div class="scrub-cap" aria-hidden="true"><small></small><b></b></div>
+  <div class="scrub-hint">Scroll ▾</div>
+  </div>
+  <div class="scrub-phases" hidden>
+    <span data-at="0.24" data-eyb="PHASE 01">465 kW – 46 MW capacity range</span>
+    <span data-at="0.50" data-eyb="PHASE 02">Every part engineered individually</span>
+    <span data-at="0.76" data-eyb="PHASE 03">Up to 90% efficiency (LHV)</span>
   </div>
 </section>
 

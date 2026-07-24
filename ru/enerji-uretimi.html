@@ -8,10 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css">
 <script src="../assets/langswitch.js" defer></script>
+<script src="../assets/scrubfx.js" defer></script>
 <link rel="alternate" hreflang="tr" href="https://akicagkan.github.io/bersey-website/enerji-uretimi.html">
 <link rel="alternate" hreflang="en" href="https://akicagkan.github.io/bersey-website/en/enerji-uretimi.html">
 <link rel="alternate" hreflang="ru" href="https://akicagkan.github.io/bersey-website/ru/enerji-uretimi.html">
 <link rel="alternate" hreflang="x-default" href="https://akicagkan.github.io/bersey-website/enerji-uretimi.html">
+<link rel="stylesheet" href="../assets/scrub.css">
 </head><body>
 <div id="progress"></div>
 <header>
@@ -31,14 +33,24 @@
 
 <main>
 
-<section class="page-hero tall">
+<section class="page-hero tall" data-scrub data-scrub-src="../v2/frames/frame_" data-scrub-count="121">
+  <div class="scrub-pin">
   <div class="bgimg" style="background-image:url(../assets/images/banners/pages/energy.jpg)"></div>
-  <div class="hero-3d" data-scrolly data-model3d="boiler"></div>
-  <div class="wrap">
+  <canvas class="scrub-canvas" aria-hidden="true"></canvas>
+  <div class="scrub-scrim"></div>
+  <div class="wrap" data-scrub-fade>
     <div class="breadcrumb"><a href="index.html">Главная</a><span>&rsaquo;</span> Продукция <span>&rsaquo;</span> Производство энергии</div>
     <div class="eyebrow">Системы производства энергии</div>
     <h1>Системы производства энергии</h1>
-    <p class="sub">Комплексные котельные и теплогенерирующие системы для промышленных энергетических нужд</p>
+    <p class="sub">Прокрутите — наш термомасляный котёл разберётся на части у вас на глазах. Комплектные котельные системы и системы теплогенерации для промышленной энергетики.</p>
+  </div>
+  <div class="scrub-cap" aria-hidden="true"><small></small><b></b></div>
+  <div class="scrub-hint">Прокрутите ▾</div>
+  </div>
+  <div class="scrub-phases" hidden>
+    <span data-at="0.24" data-eyb="ФАЗА 01">Диапазон мощности 465 кВт – 46 МВт</span>
+    <span data-at="0.50" data-eyb="ФАЗА 02">Каждый узел рассчитан отдельно</span>
+    <span data-at="0.76" data-eyb="ФАЗА 03">КПД до 90% (по низшей теплоте)</span>
   </div>
 </section>
 

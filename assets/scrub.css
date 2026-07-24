@@ -1,0 +1,32 @@
+/* ── Fotogerçekçi scroll-scrub hero (v2 MONOLITH'ten uyarlandı) ── */
+[data-scrub]{position:relative;height:340vh;display:block;padding:0}
+[data-scrub] .scrub-pin{position:sticky;top:0;height:100vh;overflow:hidden;
+  display:flex;align-items:center}
+.scrub-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.scrub-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(180deg,rgba(5,30,51,.42),rgba(5,30,51,.08) 34%,rgba(5,30,51,.05) 60%,rgba(5,30,51,.78)),
+  linear-gradient(90deg,rgba(5,30,51,.55),rgba(5,30,51,0) 55%)}
+[data-scrub] .wrap{position:relative;z-index:2}
+.scrub-cap{position:absolute;right:clamp(20px,5vw,56px);top:42vh;z-index:2;text-align:right;
+  color:#fff;opacity:0;font-family:var(--font-head,'Nunito',Arial,sans-serif);font-weight:800;
+  font-size:clamp(16px,1.7vw,22px);pointer-events:none;text-shadow:0 2px 18px rgba(5,30,51,.7)}
+.scrub-cap small{display:block;color:var(--sky,#5BC2EC);font-size:11px;letter-spacing:.3em;
+  margin-bottom:5px;text-transform:uppercase}
+.scrub-hint{position:absolute;left:50%;bottom:3vh;transform:translateX(-50%);z-index:2;
+  color:#DCEAF3;font-size:11px;letter-spacing:.3em;text-transform:uppercase;pointer-events:none}
+.scrub-phases{display:none}
+/* iç sayfa hero'su (page-hero) scrub varyantı */
+.page-hero[data-scrub]{padding-top:0;min-height:0;display:block;align-items:initial}
+.page-hero[data-scrub]::after{display:none}
+.page-hero[data-scrub] .scrub-pin{display:flex;align-items:flex-end;padding-top:112px}
+.page-hero[data-scrub] .bgimg{z-index:0}
+.page-hero[data-scrub] .wrap{padding-bottom:48px}
+/* statik mod: reduced-motion, gsap yok veya kare yüklenemedi */
+.scrub-static[data-scrub]{height:auto;min-height:100vh}
+.scrub-static[data-scrub] .scrub-pin{position:relative;height:auto;min-height:100vh}
+.scrub-static .scrub-cap,.scrub-static .scrub-hint{display:none}
+@media(prefers-reduced-motion:reduce){
+  [data-scrub]{height:auto;min-height:100vh}
+  [data-scrub] .scrub-pin{position:relative;height:auto;min-height:100vh}
+  .scrub-cap,.scrub-hint{display:none}
+}

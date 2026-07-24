@@ -103,15 +103,16 @@
   .btn-white{background:#fff;color:var(--head)}
 
   /* ══ HERO — gerçek fotoğraf carousel ══ */
-  #hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
-    background:var(--night)}
+  #hero{position:relative;background:var(--night)}
+  #hero .scrub-pin{display:flex;align-items:center}
   .hero-slides{position:absolute;inset:0;z-index:0}
   .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;
     opacity:0;transition:opacity 1.2s ease;transform:scale(1.05)}
   .hero-slide.active{opacity:1;animation:kenburns 6s ease-out forwards}
   @keyframes kenburns{from{transform:scale(1.05)}to{transform:scale(1.14)}}
   .hero-scrim{position:absolute;inset:0;z-index:1;
-    background:linear-gradient(100deg,rgba(5,30,51,.92) 0%,rgba(5,30,51,.72) 45%,rgba(5,30,51,.35) 100%)}
+    background:linear-gradient(100deg,rgba(5,30,51,.78) 0%,rgba(5,30,51,.36) 48%,rgba(5,30,51,.08) 100%),
+    linear-gradient(180deg,rgba(5,30,51,0) 70%,rgba(5,30,51,.55) 100%)}
   #hero .wrap{position:relative;z-index:2;padding-top:96px;padding-bottom:40px}
   .hero-eyebrow{color:var(--sky);font-weight:600;letter-spacing:.14em;text-transform:uppercase;
     font-size:13px;margin-bottom:16px}
@@ -344,6 +345,8 @@
   }
 </style>
 <script src="../assets/langswitch.js" defer></script>
+<script src="../assets/scrubfx.js" defer></script>
+<link rel="stylesheet" href="../assets/scrub.css">
 </head>
 <body>
 <div id="progress"></div>
@@ -366,10 +369,11 @@
 
 <main>
   <!-- ══ HERO ══ -->
-  <section id="hero">
-    <div class="hero-slides" id="hero-slides"></div>
+  <section id="hero" data-scrub data-scrub-src="../v2/frames/frame_" data-scrub-count="121">
+    <div class="scrub-pin">
+    <canvas class="scrub-canvas" aria-hidden="true"></canvas>
     <div class="hero-scrim"></div>
-    <div class="wrap">
+    <div class="wrap" data-scrub-fade>
       <p class="hero-eyebrow" data-reveal>Engineering • Manufacturing • EPC Solutions</p>
       <h1 data-reveal>We Generate<br>the Energy of Industry</h1>
       <p class="lead" data-reveal>Since 1979, Bersey has been delivering industrial solutions in energy
@@ -391,9 +395,13 @@
         <span>CE</span><span>EAC</span><span>ISO 9001</span><span>Belarus</span>
       </div>
     </div>
-    <div class="hero-caption">
-      <span id="hero-cap-text">Starwood 27MW Power Plant</span>
-      <div class="hero-dots" id="hero-dots"></div>
+    <div class="scrub-cap" aria-hidden="true"><small></small><b></b></div>
+    <div class="scrub-hint">Scroll ▾</div>
+    </div>
+    <div class="scrub-phases" hidden>
+      <span data-at="0.24" data-eyb="PHASE 01">Burner group detaches</span>
+      <span data-at="0.50" data-eyb="PHASE 02">Front door and shell open</span>
+      <span data-at="0.76" data-eyb="PHASE 03">Coil and internals revealed</span>
     </div>
   </section>
 
@@ -678,16 +686,6 @@
 
 <script>
 /* ══ VERİ ══ */
-const HERO_SLIDES = [
-  ['hero-slide-1.jpg','Starwood 27MW Power Plant'],
-  ['hero-slide-2.jpg','Kronospan Power Plant'],
-  ['hero-slide-3.jpg','Pinskdrev Belarus Facility'],
-  ['hero-slide-4.jpg','Kastamonu Entegre Facility'],
-  ['hero-slide-5.jpg','Yıldız Entegre Aslanbey'],
-  ['hero-slide-6.jpg','Kronospan Belarus Facility'],
-  ['hero-slide-7.jpg','Starwood Hamzabey Power Plant'],
-  ['hero-slide-8.jpg','UPG Zheshart Russia Facility'],
-];
 const CLIENTS = ['kronospan','yildiz-entegre','starwood','kastamonu','pinskdrev','borisovdrev',
   'hayat_kimya','orma','sveza','agt','teverpan','itc','krasny-yakor','aymar','trakyabirlik',
   'doysan','camsan','camsan-adapazari','siempelkamp','buttner','dieffenbacher','upg-zheshart',
@@ -738,14 +736,6 @@ const TIMELINE = [
 /* ══ DOM KURULUMU ══ */
 (function build(){
   const IMG = '../assets/images/';
-  // Hero slaytları + noktalar
-  const hs = document.getElementById('hero-slides'), hd = document.getElementById('hero-dots');
-  HERO_SLIDES.forEach(([f,cap],i)=>{
-    const d=document.createElement('div'); d.className='hero-slide'+(i===0?' active':'');
-    d.style.backgroundImage=`url(${IMG}banners/${f})`; hs.appendChild(d);
-    const b=document.createElement('button'); if(i===0)b.className='active';
-    b.setAttribute('aria-label',cap); b.dataset.i=i; hd.appendChild(b);
-  });
   // Logo şeridi (iki kez)
   const lt=document.getElementById('logo-track');
   const logos=[...CLIENTS,...CLIENTS].map(c=>`<img src="${IMG}clients/${c}.png" alt="${c}" loading="lazy">`).join('');
@@ -779,24 +769,7 @@ const TIMELINE = [
   window.__prefersReduced = prefersReduced;
   window.__lenis = null;
 
-  // Hero carousel
-  var slides=[].slice.call(document.querySelectorAll('.hero-slide'));
-  var dots=[].slice.call(document.querySelectorAll('#hero-dots button'));
-  var capEl=document.getElementById('hero-cap-text');
-  var cur=0,timer=null;
-  function show(i){
-    slides[cur].classList.remove('active'); dots[cur].classList.remove('active');
-    cur=(i+slides.length)%slides.length;
-    slides[cur].classList.add('active'); dots[cur].classList.add('active');
-    capEl.textContent=HERO_SLIDES[cur][1];
-  }
-  function next(){show(cur+1);}
-  function play(){ if(prefersReduced)return; stop(); timer=setInterval(next,4000); }
-  function stop(){ if(timer)clearInterval(timer); }
-  dots.forEach(function(d){ d.addEventListener('click',function(){show(+d.dataset.i);play();}); });
-  var heroEl=document.getElementById('hero');
-  heroEl.addEventListener('mouseenter',stop); heroEl.addEventListener('mouseleave',play);
-  play();
+  // Hero: fotogerçekçi scrub — assets/scrubfx.js yönetiyor
 
   // Yakıt sekmeleri
   var ftabs=[].slice.call(document.querySelectorAll('.fuel-tab'));
