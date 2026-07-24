@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kariyer - Bersey'de İş Fırsatları | BERSEY - Engineered Solutions</title>
+<meta name="description" content="Bersey endüstriyel enerji sistemlerinde kariyer fırsatları. Deneyimli mühendislik ekibimize katılın. Career opportunities at Bersey. Вакансии в Bersey.">
+<link rel="icon" href="assets/brand/bersey-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div id="progress"></div>
+<header>
+  <a class="wordmark" href="index.html"><img class="wm-logo" src="assets/brand/bersey-amblem.svg" alt="BERSEY"></a>
+  <nav id="site-nav">
+    <a href="enerji-uretimi.html">Enerji Üretimi</a>
+    <a href="yakma-sistemleri.html">Yakma Sistemleri</a>
+    <a href="proses-ekipmanlari.html">Proses Ekipmanları</a>
+    <a href="muhendislik-hizmetleri.html">Mühendislik</a>
+    <a href="hakkimizda.html" class="active">Hakkımızda</a>
+    <a href="referanslar.html">Referanslar</a>
+    <a href="katalog.html">Dokümanlar</a>
+    <a class="nav-cta" href="iletisim.html">Teklif Alın</a>
+  </nav>
+  <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">&#9776;</button>
+</header>
+
+<main>
+  <section class="page-hero tall">
+    <div class="bgimg" style="background-image:url(assets/images/banners/pages/about.jpg)"></div>
+    <div class="hero-3d" data-model3d="hardhat"></div>
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Ana Sayfa</a><span>&rsaquo;</span><a href="hakkimizda.html">Hakkımızda</a><span>&rsaquo;</span> Kariyer</div>
+      <div class="eyebrow">İnsan Kaynakları</div>
+      <h1>Kariyer</h1>
+      <p class="sub">Bersey ailesine katılın</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <div class="eyebrow" data-reveal>Kariyer</div>
+      <h2 data-reveal>Bersey Ailesine Katılın</h2>
+      <div class="stack">
+        <p class="lead" data-reveal>1979 yılından bu yana endüstriyel enerji sektöründe öncü olan Bersey, mühendislik tutkusuyla çalışan, yenilikçi ve dinamik bir ekibe sahiptir. Eğer siz de endüstriyel mühendislik alanında kendinizi geliştirmek ve uluslararası projelerde yer almak istiyorsanız, doğru yerdesiniz.</p>
+        <div class="grid g2">
+          <div class="card feature-card" data-reveal>
+            <div class="ic">💼</div>
+            <h3>Uluslararası Projeler</h3>
+            <p><span data-count="14">14</span> ülkede <span data-count="235">235</span>+ proje deneyimi ile küresel ölçekte çalışma fırsatı</p>
+          </div>
+          <div class="card feature-card" data-reveal>
+            <div class="ic">👥</div>
+            <h3>Deneyimli Ekip</h3>
+            <p><span data-count="47">47</span> yıllık sektör tecrübesi ile güçlü bir mühendislik ve üretim kadrosu</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-surface">
+    <div class="wrap narrow">
+      <div class="eyebrow" data-reveal>Başvuru</div>
+      <h2 data-reveal>İş Başvuru Formu</h2>
+      <div class="stack">
+        <p class="lead" data-reveal>Aşağıdaki formu doldurarak başvurunuzu bize iletin. En kısa sürede sizinle iletişime geçeceğiz.</p>
+        <form class="form" data-reveal onsubmit="event.preventDefault();document.getElementById('form-thanks').hidden=false;this.reset();">
+          <div class="row">
+            <div class="field">
+              <label for="ad-soyad">Ad Soyad <span class="req">*</span></label>
+              <input type="text" id="ad-soyad" name="ad-soyad" required>
+            </div>
+            <div class="field">
+              <label for="eposta">E-posta <span class="req">*</span></label>
+              <input type="email" id="eposta" name="eposta" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="telefon">Telefon <span class="req">*</span></label>
+              <input type="tel" id="telefon" name="telefon" required>
+            </div>
+            <div class="field">
+              <label for="pozisyon">Başvurulan Pozisyon <span class="req">*</span></label>
+              <select id="pozisyon" name="pozisyon" required>
+                <option value="">---</option>
+                <option>Makine Mühendisi</option>
+                <option>Proje Mühendisi</option>
+                <option>Kaynakçı / Kaynak Teknikeri</option>
+                <option>Üretim Teknikeri</option>
+                <option>Kalite Kontrol Uzmanı</option>
+                <option>Satış &amp; Pazarlama Uzmanı</option>
+                <option>Diğer</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>CV / Özgeçmiş</label>
+            <label class="dropzone">Dosyayı buraya sürükleyin veya <strong>dosya seçin</strong><input type="file" name="cv" hidden></label>
+            <p class="form-note">Maksimum 10 MB — Tüm dosya formatları desteklenir</p>
+          </div>
+          <div class="field">
+            <label for="mesaj">Ek Bilgi / Mesaj</label>
+            <textarea id="mesaj" name="mesaj" rows="5"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-blue">Başvuruyu Gönder</button>
+          </div>
+          <p id="form-thanks" hidden><strong>Başvurunuz alınmıştır.</strong> En kısa sürede sizinle iletişime geçeceğiz. Teşekkür ederiz!</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div><img class="foot-logo" src="assets/brand/bersey-logo-ana.svg" alt="BERSEY">
+      <p class="foot-desc">Endüstriyel enerji üretim sistemlerinde 47 yıllık deneyim ile mühendisçe çözümler.</p></div>
+    <div><h5>Hızlı Bağlantılar</h5><ul>
+      <li><a href="hakkimizda.html">Hakkımızda</a></li><li><a href="referanslar.html">Referanslar</a></li>
+      <li><a href="katalog.html">Dokümanlar</a></li><li><a href="galeri.html">Galeri</a></li>
+      <li><a href="iletisim.html">İletişim</a></li></ul></div>
+    <div><h5>İletişim</h5><ul>
+      <li>Söğütlüçeşme Mah., Halkalı Cad. No:257,<br>Sefaköy - İstanbul</li>
+      <li><a href="tel:+902126937474">+90 212 693 74 74</a></li>
+      <li><a href="mailto:info@berseykazan.com">info@berseykazan.com</a></li></ul></div>
+  </div>
+  <div class="foot-bottom">&copy; 2026 Bersey Ltd. Şti. Tüm hakları saklıdır.</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/fx.js" defer></script>
+<script src="assets/boiler3d.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"#organization","name":"Bersey Engineered Solutions","alternateName":["Bersey Muhendislik","Bersey Kazan"],"url":"https://www.berseykazan.com","foundingDate":"1979","slogan":"Engineered Solutions","telephone":"+902126937474","email":"info@berseykazan.com","address":{"@type":"PostalAddress","streetAddress":"Sogutlucesme Mah., Halkali Cad. No:257","addressLocality":"Sefakoy, Kucukcekmece","addressRegion":"Istanbul","postalCode":"34295","addressCountry":"TR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://www.berseykazan.com/index.html"},{"@type":"ListItem","position":2,"name":"Hakkımızda","item":"https://www.berseykazan.com/hakkimizda.html"},{"@type":"ListItem","position":3,"name":"Kariyer","item":"https://www.berseykazan.com/kariyer.html"}]}</script>
+</body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İletişim - Teklif Alın | BERSEY - Engineered Solutions</title>
+<meta name="description" content="Bersey ile iletişime geçin. Endüstriyel kazan ve enerji sistemleri için teklif alın. İstanbul, Türkiye.">
+<link rel="icon" href="assets/brand/bersey-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div id="progress"></div>
+<header>
+  <a class="wordmark" href="index.html"><img class="wm-logo" src="assets/brand/bersey-amblem.svg" alt="BERSEY"></a>
+  <nav id="site-nav">
+    <a href="enerji-uretimi.html">Enerji Üretimi</a>
+    <a href="yakma-sistemleri.html">Yakma Sistemleri</a>
+    <a href="proses-ekipmanlari.html">Proses Ekipmanları</a>
+    <a href="muhendislik-hizmetleri.html">Mühendislik</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+    <a href="referanslar.html">Referanslar</a>
+    <a href="katalog.html">Dokümanlar</a>
+    <a class="nav-cta" href="iletisim.html">Teklif Alın</a>
+  </nav>
+  <button class="menu-btn" id="menu-btn" aria-label="Menü" aria-expanded="false" aria-controls="site-nav">&#9776;</button>
+</header>
+
+<main>
+  <section class="page-hero tall">
+    <div class="bgimg" style="background-image:url(assets/images/bersey/factory.jpg)"></div>
+    <div class="hero-3d" data-model3d="pin"></div>
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Ana Sayfa</a><span>›</span> İletişim</div>
+      <div class="eyebrow">İletişim</div>
+      <h1>Projeniz için bizimle iletişime geçin</h1>
+      <p class="sub">Her sistem; yakıt özellikleri, proses gereksinimleri ve işletme koşulları
+        dikkate alınarak özel olarak tasarlanır.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid g2" style="align-items:start;gap:36px">
+        <!-- Form -->
+        <div class="card" style="padding:clamp(24px,3vw,36px)" data-reveal>
+          <h2 style="font-size:1.5rem">Teklif / Bilgi Formu</h2>
+          <p style="color:var(--gray);font-size:14px;margin:6px 0 20px">Formu doldurun, ekibimiz en kısa sürede dönüş yapsın.</p>
+          <form class="form" onsubmit="event.preventDefault(); this.style.display='none'; document.getElementById('form-ok').style.display='block';">
+            <div class="row">
+              <div class="field"><label>Ad Soyad <span class="req">*</span></label><input type="text" required></div>
+              <div class="field"><label>E-posta <span class="req">*</span></label><input type="email" required></div>
+            </div>
+            <div class="row">
+              <div class="field"><label>Telefon</label><input type="tel"></div>
+              <div class="field"><label>Firma</label><input type="text"></div>
+            </div>
+            <div class="field"><label>Konu <span class="req">*</span></label>
+              <select required>
+                <option>Genel Bilgi</option>
+                <option>Teklif Talebi</option>
+                <option>Teknik Destek</option>
+                <option>İş Birliği</option>
+              </select></div>
+            <div class="field"><label>Mesaj <span class="req">*</span></label>
+              <textarea rows="5" required></textarea></div>
+            <div class="field"><label>Dosya Ekle (Opsiyonel)</label>
+              <label class="dropzone">📎 Dosyayı buraya sürükleyin veya dosya seçin — Maks. 10MB
+                <input type="file" style="display:none"></label></div>
+            <button type="submit" class="btn btn-blue">Mesaj Gönder ✈</button>
+            <p class="form-note">Bilgileriniz gizli tutulacaktır ve sadece iletişim amacıyla kullanılacaktır.</p>
+          </form>
+          <div id="form-ok" style="display:none;padding:24px 0;color:var(--ok);font-weight:600">
+            ✓ Mesajınız alındı. En kısa sürede dönüş yapacağız. (Demo — form backend'i bağlanacak.)
+          </div>
+        </div>
+
+        <!-- İletişim bilgileri -->
+        <div class="stack">
+          <div class="card info-card" data-reveal>
+            <h3>🏢 Merkez Ofis</h3>
+            <div class="info-row"><span class="ic">📍</span><span>Söğütlüçeşme Mah., Halkalı Cad. No:257, Bina 4, Kat 2-3, Sefaköy – İstanbul</span></div>
+            <div class="info-row"><span class="ic">📞</span><a href="tel:+902126937474">+90 212 693 74 74</a></div>
+            <div class="info-row"><span class="ic">✉</span><a href="mailto:info@berseykazan.com">info@berseykazan.com</a></div>
+          </div>
+          <div class="card info-card" data-reveal>
+            <h3>🏭 Fabrika</h3>
+            <div class="info-row"><span class="ic">📍</span><span>Barbaros Mah., İstanbul — Türkiye</span></div>
+            <div class="info-row"><span class="ic">📞</span><a href="tel:+902126937474">+90 212 693 74 74</a></div>
+          </div>
+          <div class="card info-card" data-reveal>
+            <h3>🌍 Satış &amp; İhracat</h3>
+            <div class="info-row"><span class="ic">✉</span><a href="mailto:sales@berseykazan.com">sales@berseykazan.com</a></div>
+            <div class="info-row"><span class="ic">🗣</span><span>Türkçe · English · Русский</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div><img class="foot-logo" src="assets/brand/bersey-logo-ana.svg" alt="BERSEY">
+      <p class="foot-desc">Endüstriyel enerji üretim sistemlerinde <span data-count="47">47</span> yıllık deneyim ile mühendisçe çözümler.</p></div>
+    <div><h5>Hızlı Bağlantılar</h5><ul>
+      <li><a href="hakkimizda.html">Hakkımızda</a></li><li><a href="referanslar.html">Referanslar</a></li>
+      <li><a href="katalog.html">Dokümanlar</a></li><li><a href="galeri.html">Galeri</a></li>
+      <li><a href="iletisim.html">İletişim</a></li></ul></div>
+    <div><h5>İletişim</h5><ul>
+      <li>Söğütlüçeşme Mah., Halkalı Cad. No:257,<br>Sefaköy — İstanbul</li>
+      <li><a href="tel:+902126937474">+90 212 693 74 74</a></li>
+      <li><a href="mailto:info@berseykazan.com">info@berseykazan.com</a></li></ul></div>
+  </div>
+  <div class="foot-bottom">© 2026 Bersey Ltd. Şti. Tüm hakları saklıdır.</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/fx.js" defer></script>
+<script src="assets/boiler3d.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"#organization","name":"Bersey Engineered Solutions","alternateName":["Bersey Muhendislik","Bersey Kazan"],"url":"https://www.berseykazan.com","foundingDate":"1979","slogan":"Engineered Solutions","telephone":"+902126937474","email":"info@berseykazan.com","address":{"@type":"PostalAddress","streetAddress":"Sogutlucesme Mah., Halkali Cad. No:257","addressLocality":"Sefakoy, Kucukcekmece","addressRegion":"Istanbul","postalCode":"34295","addressCountry":"TR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://www.berseykazan.com/index.html"},{"@type":"ListItem","position":2,"name":"İletişim","item":"https://www.berseykazan.com/iletisim.html"}]}</script>
+</body></html>
