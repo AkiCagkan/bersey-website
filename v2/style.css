@@ -18,6 +18,63 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16p
 img{max-width:100%;display:block}
 a{color:inherit}
 
+/* ── tam navigasyon (çok sayfalı v2) ── */
+#hd{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;
+  justify-content:space-between;padding:13px clamp(18px,4vw,56px);
+  background:rgba(4,7,11,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)}
+#hd .wm{font-family:var(--dsp);font-weight:700;font-size:18px;letter-spacing:.34em;
+  text-decoration:none;color:var(--ink)}
+#hd .wm i{color:var(--acc);font-style:normal}
+#hd nav{display:flex;gap:clamp(10px,1.6vw,22px);align-items:center}
+#hd nav a{color:var(--mut);text-decoration:none;font-size:13.5px;font-weight:500;
+  letter-spacing:.02em;transition:color .2s;white-space:nowrap}
+#hd nav a:hover,#hd nav a.active{color:var(--ink)}
+#hd nav a.active{color:var(--acc)}
+#hd .nav-cta{font-family:var(--dsp);font-weight:700;font-size:12.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--acc-ink);background:var(--acc);
+  border-radius:999px;padding:10px 20px}
+#hd .nav-cta:hover{color:var(--acc-ink)}
+#hd .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);
+  font-size:20px;border-radius:9px;padding:4px 12px;cursor:pointer}
+@media(max-width:1080px){
+  #hd .menu-btn{display:block}
+  #hd nav{display:none;position:fixed;inset:0;top:0;flex-direction:column;justify-content:center;
+    align-items:center;background:rgba(4,7,11,.97);gap:22px}
+  #hd nav.open{display:flex}
+  #hd nav a{font-size:19px}
+}
+
+/* ── alt sayfa hero'su (dark, sağda 3D model kutusu) ── */
+.p-hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--panel);padding-top:110px}
+.p-hero .bgph{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.22}
+.p-hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(4,7,11,.92),rgba(4,7,11,.35) 60%,rgba(4,7,11,.15))}
+.p-hero .wrap{position:relative;z-index:2;padding-bottom:52px}
+.p-hero .crumb{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+.p-hero .crumb a{color:var(--mut);text-decoration:none}
+.p-hero .crumb a:hover{color:var(--acc)}
+.p-hero h1{font-family:var(--dsp);font-weight:700;font-size:clamp(36px,6vw,86px);line-height:.96;
+  letter-spacing:-.035em;text-transform:uppercase;color:var(--ink)}
+.p-hero h1 i{font-style:normal;color:var(--acc)}
+.p-hero .sub{margin-top:14px;color:var(--mut);max-width:58ch;font-size:clamp(15px,1.4vw,18px)}
+.hero-3d{position:absolute;top:0;right:-2%;bottom:-4%;width:min(56vw,820px);z-index:1;pointer-events:none}
+.hero-3d canvas{width:100%;height:100%;display:block}
+.h3d-hint{position:absolute;bottom:16px;right:22px;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--mut);opacity:.8}
+@media(max-width:900px){.hero-3d{display:none}}
+
+/* ── müşteri logo şeridi ── */
+.marq{overflow:hidden;border-block:1px solid var(--line);padding:26px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq-track{display:flex;gap:60px;align-items:center;width:max-content;animation:marq 46s linear infinite}
+.marq-track img{height:34px;width:auto;filter:grayscale(1) brightness(4);opacity:.5}
+.marq-track img:hover{filter:none;opacity:1}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq-track{animation:none}}
+
 /* ── üst bar ── */
 #bar{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;
   justify-content:space-between;padding:14px clamp(18px,4vw,56px);mix-blend-mode:difference}

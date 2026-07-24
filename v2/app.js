@@ -11,12 +11,14 @@
   if (!hasGsap || reduced) { document.body.classList.add('reduced'); }
   else doc.classList.add('js');
 
-  /* ── HERO kare-dizisi (her modda ilk kare çizilir) ── */
-  var FRAME_COUNT = window.__FRAMES || 0;
+  /* ── HERO kare-dizisi (data-scrub ile sayfa bazlı; her modda ilk kare çizilir) ── */
+  var scrubBox = document.querySelector('[data-scrub]');
+  var FRAME_COUNT = scrubBox ? (parseInt(scrubBox.getAttribute('data-scrub-count'), 10) || 0) : (window.__FRAMES || 0);
+  var FRAME_PRE = scrubBox ? (scrubBox.getAttribute('data-scrub-src') || 'frames/frame_') : 'frames/frame_';
   var canvas = document.getElementById('seq');
   var ctx = canvas ? canvas.getContext('2d') : null;
   var frames = [], loaded = 0, current = 0;
-  function src(i) { return 'frames/frame_' + String(i + 1).padStart(3, '0') + '.webp'; }
+  function src(i) { return FRAME_PRE + String(i + 1).padStart(3, '0') + '.webp'; }
   function draw(i) {
     if (!ctx) return;
     var img = null, j = i;
@@ -87,7 +89,11 @@
     var cap = document.querySelector('#hero .hcap'),
         capT = cap ? cap.querySelector('b') : null,
         capS = cap ? cap.querySelector('small') : null;
-    var PHASES = [
+    var PHASES = [].map.call(document.querySelectorAll('#hero .scrub-phases span'), function (sp) {
+      return { at: parseFloat(sp.getAttribute('data-at')) || 0.5,
+               s: sp.getAttribute('data-eyb') || '', t: sp.textContent };
+    });
+    if (!PHASES.length) PHASES = [
       { at: 0.22, s: 'FAZ 01', t: 'Brülör grubu ayrılır' },
       { at: 0.46, s: 'FAZ 02', t: 'Ön kapak ve cidar açılır' },
       { at: 0.72, s: 'FAZ 03', t: 'Serpantin ve iç aksam' }
@@ -179,4 +185,17 @@
 
   /* görseller yüklendikçe pin mesafelerini tazele */
   addEventListener('load', function () { ScrollTrigger.refresh(); });
+})();
+
+/* ── mobil menü (her modda çalışır) ── */
+(function () {
+  var menuBtn = document.getElementById('menu-btn'), nav = document.getElementById('site-nav');
+  if (!menuBtn || !nav) return;
+  menuBtn.addEventListener('click', function () {
+    var o = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(o));
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  });
 })();
