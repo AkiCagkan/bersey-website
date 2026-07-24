@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты - Запросить предложение | BERSEY - Engineered Solutions</title>
+<meta name="description" content="Свяжитесь с компанией Bersey. Запросите коммерческое предложение на промышленные котлы и энергетические системы. Стамбул, Турция.">
+<link rel="alternate" hreflang="tr" href="https://akicagkan.github.io/bersey-website/iletisim.html">
+<link rel="alternate" hreflang="en" href="https://akicagkan.github.io/bersey-website/en/iletisim.html">
+<link rel="alternate" hreflang="ru" href="https://akicagkan.github.io/bersey-website/ru/iletisim.html">
+<link rel="alternate" hreflang="x-default" href="https://akicagkan.github.io/bersey-website/iletisim.html">
+<link rel="icon" href="../assets/brand/bersey-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/langswitch.js" defer></script>
+</head><body>
+<div id="progress"></div>
+<header>
+  <a class="wordmark" href="index.html"><img class="wm-logo" src="../assets/brand/bersey-amblem.svg" alt="BERSEY"></a>
+  <nav id="site-nav">
+    <a href="enerji-uretimi.html">Производство энергии</a>
+    <a href="yakma-sistemleri.html">Системы сжигания</a>
+    <a href="proses-ekipmanlari.html">Технологическое оборудование</a>
+    <a href="muhendislik-hizmetleri.html">Инжиниринг</a>
+    <a href="hakkimizda.html">О компании</a>
+    <a href="referanslar.html">Референсы</a>
+    <a href="katalog.html">Документы</a>
+    <a class="nav-cta" href="iletisim.html">Запросить предложение</a>
+  </nav>
+  <button class="menu-btn" id="menu-btn" aria-label="Меню" aria-expanded="false" aria-controls="site-nav">&#9776;</button>
+</header>
+
+<main>
+  <section class="page-hero tall">
+    <div class="bgimg" style="background-image:url(../assets/images/bersey/factory.jpg)"></div>
+    <div class="hero-3d" data-model3d="pin"></div>
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Главная</a><span>›</span> Контакты</div>
+      <div class="eyebrow">Контакты</div>
+      <h1>Свяжитесь с нами по вашему проекту</h1>
+      <p class="sub">Каждая система проектируется индивидуально с учётом характеристик топлива,
+        технологических требований и условий эксплуатации.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid g2" style="align-items:start;gap:36px">
+        <!-- Form -->
+        <div class="card" style="padding:clamp(24px,3vw,36px)" data-reveal>
+          <h2 style="font-size:1.5rem">Форма запроса предложения / информации</h2>
+          <p style="color:var(--gray);font-size:14px;margin:6px 0 20px">Заполните форму, и наша команда свяжется с вами в кратчайшие сроки.</p>
+          <form class="form" onsubmit="event.preventDefault(); this.style.display='none'; document.getElementById('form-ok').style.display='block';">
+            <div class="row">
+              <div class="field"><label>Фамилия и имя <span class="req">*</span></label><input type="text" required></div>
+              <div class="field"><label>Эл. почта <span class="req">*</span></label><input type="email" required></div>
+            </div>
+            <div class="row">
+              <div class="field"><label>Телефон</label><input type="tel"></div>
+              <div class="field"><label>Компания</label><input type="text"></div>
+            </div>
+            <div class="field"><label>Тема <span class="req">*</span></label>
+              <select required>
+                <option>Общая информация</option>
+                <option>Запрос предложения</option>
+                <option>Техническая поддержка</option>
+                <option>Сотрудничество</option>
+              </select></div>
+            <div class="field"><label>Сообщение <span class="req">*</span></label>
+              <textarea rows="5" required></textarea></div>
+            <div class="field"><label>Прикрепить файл (необязательно)</label>
+              <label class="dropzone">📎 Перетащите файл сюда или выберите файл — макс. 10MB
+                <input type="file" style="display:none"></label></div>
+            <button type="submit" class="btn btn-blue">Отправить сообщение ✈</button>
+            <p class="form-note">Ваши данные будут храниться конфиденциально и использоваться только для связи с вами.</p>
+          </form>
+          <div id="form-ok" style="display:none;padding:24px 0;color:var(--ok);font-weight:600">
+            ✓ Ваше сообщение получено. Мы свяжемся с вами в кратчайшие сроки. (Демо — бэкенд формы будет подключён.)
+          </div>
+        </div>
+
+        <!-- Contact details -->
+        <div class="stack">
+          <div class="card info-card" data-reveal>
+            <h3>🏢 Головной офис</h3>
+            <div class="info-row"><span class="ic">📍</span><span>Söğütlüçeşme Mah., Halkalı Cad. No:257, здание 4, этажи 2-3, Сефакёй – Стамбул</span></div>
+            <div class="info-row"><span class="ic">📞</span><a href="tel:+902126937474">+90 212 693 74 74</a></div>
+            <div class="info-row"><span class="ic">✉</span><a href="mailto:info@berseykazan.com">info@berseykazan.com</a></div>
+          </div>
+          <div class="card info-card" data-reveal>
+            <h3>🏭 Завод</h3>
+            <div class="info-row"><span class="ic">📍</span><span>Barbaros Mah., Стамбул — Турция</span></div>
+            <div class="info-row"><span class="ic">📞</span><a href="tel:+902126937474">+90 212 693 74 74</a></div>
+          </div>
+          <div class="card info-card" data-reveal>
+            <h3>🌍 Продажи и экспорт</h3>
+            <div class="info-row"><span class="ic">✉</span><a href="mailto:sales@berseykazan.com">sales@berseykazan.com</a></div>
+            <div class="info-row"><span class="ic">🗣</span><span>Türkçe · English · Русский</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div><img class="foot-logo" src="../assets/brand/bersey-logo-ana.svg" alt="BERSEY">
+      <p class="foot-desc">Инженерные решения, основанные на <span data-count="47">47</span>-летнем опыте в области промышленных энергетических систем.</p></div>
+    <div><h5>Быстрые ссылки</h5><ul>
+      <li><a href="hakkimizda.html">О компании</a></li><li><a href="referanslar.html">Референсы</a></li>
+      <li><a href="katalog.html">Документы</a></li><li><a href="galeri.html">Галерея</a></li>
+      <li><a href="iletisim.html">Контакты</a></li></ul></div>
+    <div><h5>Контакты</h5><ul>
+      <li>Söğütlüçeşme Mah., Halkalı Cad. No:257,<br>Сефакёй — Стамбул</li>
+      <li><a href="tel:+902126937474">+90 212 693 74 74</a></li>
+      <li><a href="mailto:info@berseykazan.com">info@berseykazan.com</a></li></ul></div>
+  </div>
+  <div class="foot-bottom">© 2026 Bersey Ltd. Şti. Все права защищены.</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/fx.js" defer></script>
+<script src="../assets/boiler3d.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"#organization","name":"Bersey Engineered Solutions","alternateName":["Bersey Muhendislik","Bersey Kazan"],"url":"https://www.berseykazan.com","foundingDate":"1979","slogan":"Engineered Solutions","telephone":"+902126937474","email":"info@berseykazan.com","address":{"@type":"PostalAddress","streetAddress":"Sogutlucesme Mah., Halkali Cad. No:257","addressLocality":"Sefakoy, Kucukcekmece","addressRegion":"Istanbul","postalCode":"34295","addressCountry":"TR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://www.berseykazan.com/index.html"},{"@type":"ListItem","position":2,"name":"Контакты","item":"https://www.berseykazan.com/iletisim.html"}]}</script>
+</body></html>

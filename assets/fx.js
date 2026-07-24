@@ -78,7 +78,33 @@
   });
 
   /* ── Coğrafi harita v2: gerçek dünya nokta-matrisi (worldmap.js) + ışık kuyruklu ağlar ── */
-  var HUB = { name: 'İSTANBUL', lat: 41.0, lon: 28.98 };
+  var MAPLANG = (document.documentElement.lang || 'tr').slice(0, 2).toLowerCase();
+  if (MAPLANG !== 'en' && MAPLANG !== 'ru') MAPLANG = 'tr';
+  var GEO_I18N = {
+    'İSTANBUL': { en: 'ISTANBUL', ru: 'СТАМБУЛ' },
+    'İSTANBUL · MERKEZ': { en: 'ISTANBUL · HQ', ru: 'СТАМБУЛ · ЦЕНТР' },
+    'Rusya': { en: 'Russia', ru: 'Россия' },
+    'Belarus': { en: 'Belarus', ru: 'Беларусь' },
+    'Ukrayna': { en: 'Ukraine', ru: 'Украина' },
+    'Romanya': { en: 'Romania', ru: 'Румыния' },
+    'Bulgaristan': { en: 'Bulgaria', ru: 'Болгария' },
+    'Sırbistan': { en: 'Serbia', ru: 'Сербия' },
+    'Gürcistan': { en: 'Georgia', ru: 'Грузия' },
+    'Azerbaycan': { en: 'Azerbaijan', ru: 'Азербайджан' },
+    'Kazakistan': { en: 'Kazakhstan', ru: 'Казахстан' },
+    'İran': { en: 'Iran', ru: 'Иран' },
+    'Ürdün': { en: 'Jordan', ru: 'Иордания' },
+    'S. Arabistan': { en: 'Saudi Arabia', ru: 'С. Аравия' },
+    'Mısır': { en: 'Egypt', ru: 'Египет' },
+    'Suriye': { en: 'Syria', ru: 'Сирия' },
+    'Sudan': { en: 'Sudan', ru: 'Судан' },
+    'Gana': { en: 'Ghana', ru: 'Гана' }
+  };
+  function geoName(n) {
+    var d = GEO_I18N[n];
+    return (MAPLANG !== 'tr' && d && d[MAPLANG]) ? d[MAPLANG] : n;
+  }
+  var HUB = { name: geoName('İSTANBUL'), lat: 41.0, lon: 28.98 };
   var NODES = [
     { name: 'Rusya', lat: 55.75, lon: 37.62, lm: 'kremlin' },
     { name: 'Belarus', lat: 53.9, lon: 27.56, lm: 'castle' },
@@ -97,6 +123,8 @@
     { name: 'Sudan', lat: 15.50, lon: 32.55, minor: true, lm: 'meroe' },
     { name: 'Gana', lat: 7.9, lon: -1.0, minor: true, lm: 'star' }
   ];
+  NODES.forEach(function (n) { n.name = geoName(n.name); });
+  var HUB_LABEL = geoName('İSTANBUL · MERKEZ');
   /* ── Ülke anıtları: RENKLİ mini illüstrasyonlar (dolgu + kontur + ışıltı) ──
      Her fonksiyon kendi renklerini basar; F=fill yardımcıcı, S=stroke ── */
   function F(c, color) { c.fillStyle = color; c.fill(); }
@@ -499,9 +527,9 @@
       ctx.strokeStyle = 'rgba(255,255,255,' + (0.5 - hp * 0.35) + ')'; ctx.lineWidth = 1.6; ctx.stroke();
       ctx.font = '800 11.5px Nunito, Arial, sans-serif';
       ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(5,30,51,.8)';
-      ctx.strokeText('İSTANBUL · MERKEZ', hb[0], hb[1] + 27);
+      ctx.strokeText(HUB_LABEL, hb[0], hb[1] + 27);
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillText('İSTANBUL · MERKEZ', hb[0], hb[1] + 27);
+      ctx.fillText(HUB_LABEL, hb[0], hb[1] + 27);
     }
     var running = false, rafId = 0;
     function loop(now) { if (!running) return; draw(now); rafId = requestAnimationFrame(loop); }

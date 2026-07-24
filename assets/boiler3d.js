@@ -17,12 +17,34 @@
     .then(function (THREE) { mounts.forEach(function (el) { mount(THREE, el); }); })
     .catch(function () {});
 
-  var CAPTIONS = {
-    boiler: ['465 kW – 46 MW kapasite aralığı', 'Her parça ayrı hesaplanır', "%90'a varan verimlilik (LHV)"],
-    burner: ['24 yakıt türünde kanıtlanmış deneyim', 'Kontrollü hava, tam yanma', 'Düşük emisyon, yüksek verim'],
-    vessel: ['AD 2000 · EN 13445 tasarım', 'CE · EAC · Gospromnadzor sertifikalı', 'Uzun ömür, güvenli işletme'],
-    twin: ['3D ortamda modellenir', 'ASME · EN · API standartlarında analiz', 'Sahaya kusursuz iner']
+  var LANG = (document.documentElement.lang || 'tr').slice(0, 2).toLowerCase();
+  if (LANG !== 'en' && LANG !== 'ru') LANG = 'tr';
+  var CAPTIONS_I18N = {
+    tr: {
+      boiler: ['465 kW – 46 MW kapasite aralığı', 'Her parça ayrı hesaplanır', "%90'a varan verimlilik (LHV)"],
+      burner: ['24 yakıt türünde kanıtlanmış deneyim', 'Kontrollü hava, tam yanma', 'Düşük emisyon, yüksek verim'],
+      vessel: ['AD 2000 · EN 13445 tasarım', 'CE · EAC · Gospromnadzor sertifikalı', 'Uzun ömür, güvenli işletme'],
+      twin: ['3D ortamda modellenir', 'ASME · EN · API standartlarında analiz', 'Sahaya kusursuz iner']
+    },
+    en: {
+      boiler: ['465 kW – 46 MW capacity range', 'Every part engineered individually', 'Up to 90% efficiency (LHV)'],
+      burner: ['Proven experience with 24 fuel types', 'Controlled air, complete combustion', 'Low emissions, high efficiency'],
+      vessel: ['AD 2000 · EN 13445 design', 'CE · EAC · Gospromnadzor certified', 'Long service life, safe operation'],
+      twin: ['Modelled in 3D', 'Analysed to ASME · EN · API standards', 'Delivered flawlessly to site']
+    },
+    ru: {
+      boiler: ['Диапазон мощности 465 кВт – 46 МВт', 'Каждый узел рассчитан отдельно', 'КПД до 90% (по низшей теплоте)'],
+      burner: ['Подтверждённый опыт на 24 видах топлива', 'Контролируемый воздух, полное сгорание', 'Низкие выбросы, высокий КПД'],
+      vessel: ['Расчёт по AD 2000 · EN 13445', 'Сертификаты CE · EAC · Госпромнадзор', 'Долгий срок службы, безопасная эксплуатация'],
+      twin: ['Моделируется в 3D', 'Расчёты по ASME · EN · API', 'Безупречный монтаж на площадке']
+    }
   };
+  var HINTS_I18N = {
+    tr: ['⟲ kaydırın · model dağılır ve birleşir', '⟲ 360° — sürükleyerek döndürün'],
+    en: ['⟲ scroll · the model explodes and reassembles', '⟲ 360° — drag to rotate'],
+    ru: ['⟲ прокрутите · модель разбирается и собирается', '⟲ 360° — вращайте перетаскиванием']
+  };
+  var CAPTIONS = CAPTIONS_I18N[LANG];
 
   function ease(t) { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); }
   function lerp(a, b, t) { return a + (b - a) * t; }
@@ -45,7 +67,7 @@
 
     var hint = document.createElement('div');
     hint.className = 'h3d-hint';
-    hint.textContent = wantScrolly ? '⟲ kaydırın · model dağılır ve birleşir' : '⟲ 360° — sürükleyerek döndürün';
+    hint.textContent = wantScrolly ? HINTS_I18N[LANG][0] : HINTS_I18N[LANG][1];
     el.appendChild(hint);
 
     var scene = new THREE.Scene();
