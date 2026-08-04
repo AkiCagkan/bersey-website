@@ -15,3 +15,9 @@
 #teklif-cta .cta-bg::after{content:"";position:absolute;inset:0;
   background:linear-gradient(90deg,rgba(4,7,11,.94) 0%,rgba(4,7,11,.72) 55%,rgba(4,7,11,.45) 100%)}
 #teklif-cta .wrap{position:relative;z-index:1}
+
+/* ---- Dil seçici ---- */
+.lang-sw{font-size:13px;color:var(--mut);letter-spacing:.05em;white-space:nowrap}
+.lang-sw a{color:var(--mut);text-decoration:none;padding:2px 4px}
+.lang-sw a:hover{color:var(--ink)}
+.lang-sw b{color:var(--ink);font-weight:600;padding:2px 4px}

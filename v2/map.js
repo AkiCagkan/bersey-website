@@ -3,27 +3,39 @@
   const host = document.getElementById('cografya-harita');
   if (!host) return;
 
-  // Ülke verisi: [isim, seçili proje sayısı (null = aktif pazar), lon, lat (yalnız RU işaretçi düzeltmesi için)]
+  // Dil: sayfanın <html lang> değerine göre isim ve etiketler
+  const LANG = (document.documentElement.lang || 'tr').slice(0, 2);
+  const L = {
+    tr: { proje: n => n + ' seçili proje', pazar: 'Aktif pazar' },
+    en: { proje: n => n + ' selected projects', pazar: 'Active market' },
+    ru: { proje: n => n + ' избранных проектов', pazar: 'Активный рынок' },
+  }[LANG] || { proje: n => n, pazar: '' };
+  const NAMES = {
+    tr: { TR: 'Türkiye', RU: 'Rusya', BY: 'Belarus', UA: 'Ukrayna', RO: 'Romanya', IR: 'İran', AZ: 'Azerbaycan', BG: 'Bulgaristan', EG: 'Mısır', GE: 'Gürcistan', JO: 'Ürdün', KZ: 'Kazakistan', RS: 'Sırbistan', SA: 'Suudi Arabistan' },
+    en: { TR: 'Türkiye', RU: 'Russia', BY: 'Belarus', UA: 'Ukraine', RO: 'Romania', IR: 'Iran', AZ: 'Azerbaijan', BG: 'Bulgaria', EG: 'Egypt', GE: 'Georgia', JO: 'Jordan', KZ: 'Kazakhstan', RS: 'Serbia', SA: 'Saudi Arabia' },
+    ru: { TR: 'Турция', RU: 'Россия', BY: 'Беларусь', UA: 'Украина', RO: 'Румыния', IR: 'Иран', AZ: 'Азербайджан', BG: 'Болгария', EG: 'Египет', GE: 'Грузия', JO: 'Иордания', KZ: 'Казахстан', RS: 'Сербия', SA: 'Саудовская Аравия' },
+  }[LANG] || {};
   const COUNTRIES = {
-    TR: { ad: 'Türkiye', proje: 25 },
-    RU: { ad: 'Rusya', proje: 13, nokta: [37.6, 55.7] },   // işaretçi Moskova'da
-    BY: { ad: 'Belarus', proje: 3 },
-    UA: { ad: 'Ukrayna', proje: 1 },
-    RO: { ad: 'Romanya', proje: 2 },
-    IR: { ad: 'İran', proje: 1 },
-    AZ: { ad: 'Azerbaycan', proje: null },
-    BG: { ad: 'Bulgaristan', proje: null },
-    EG: { ad: 'Mısır', proje: null },
-    GE: { ad: 'Gürcistan', proje: null },
-    JO: { ad: 'Ürdün', proje: null },
-    KZ: { ad: 'Kazakistan', proje: null },
-    RS: { ad: 'Sırbistan', proje: null },
-    SA: { ad: 'Suudi Arabistan', proje: null },
+    TR: { proje: 25 },
+    RU: { proje: 13, nokta: [37.6, 55.7] },   // işaretçi Moskova'da
+    BY: { proje: 3 },
+    UA: { proje: 1 },
+    RO: { proje: 2 },
+    IR: { proje: 1 },
+    AZ: { proje: null },
+    BG: { proje: null },
+    EG: { proje: null },
+    GE: { proje: null },
+    JO: { proje: null },
+    KZ: { proje: null },
+    RS: { proje: null },
+    SA: { proje: null },
   };
+  for (const cc in COUNTRIES) COUNTRIES[cc].ad = NAMES[cc] || cc;
   // Kalibrasyon çapaları: bbox merkezi ≈ coğrafi merkez kabulü (equirectangular)
   const ANCHORS = { TR: [35.2, 38.9], KZ: [66.9, 48.0], EG: [29.8, 26.6] };
 
-  const res = await fetch('../assets/maps/world.svg');
+  const res = await fetch((LANG === 'tr' ? '../assets' : '../../assets') + '/maps/world.svg');
   if (!res.ok) return;
   const doc = new DOMParser().parseFromString(await res.text(), 'image/svg+xml');
 
@@ -102,8 +114,9 @@
     dot.setAttribute('class', 'm-dot');
     g.appendChild(halo); g.appendChild(dot);
     g.addEventListener('mouseenter', () => {
-      tip.innerHTML = `<img src="../assets/images/flags/${cc.toLowerCase()}.png" alt="">` +
-        `<b>${d.ad}</b><span>${d.proje ? d.proje + ' seçili proje' : 'Aktif pazar'}</span>`;
+      const flagBase = LANG === 'tr' ? '../assets' : '../../assets';
+      tip.innerHTML = `<img src="${flagBase}/images/flags/${cc.toLowerCase()}.png" alt="">` +
+        `<b>${d.ad}</b><span>${d.proje ? L.proje(d.proje) : L.pazar}</span>`;
       tip.hidden = false;
       const r = dot.getBoundingClientRect(), h = host.getBoundingClientRect();
       tip.style.left = (r.left - h.left + r.width / 2) + 'px';
