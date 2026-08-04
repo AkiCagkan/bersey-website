@@ -1,0 +1,17 @@
+
+/* ---- Sertifika kartları (anasayfa) ---- */
+.certgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+.cert{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;text-decoration:none;color:var(--ink);transition:border-color .25s,transform .25s}
+.cert:hover{border-color:var(--acc);transform:translateY(-2px)}
+.cert b{display:block;font-family:var(--dsp);font-size:15.5px}
+.cert span{display:block;color:var(--mut);font-size:12.5px;margin-top:3px}
+@media(max-width:860px){.certgrid{grid-template-columns:repeat(2,1fr)}}
+
+/* ---- Teklif CTA bölümü ---- */
+#teklif-cta{position:relative;padding:110px 0;overflow:hidden}
+#teklif-cta .cta-bg{position:absolute;inset:0;background-size:cover;background-position:center;
+  filter:saturate(.7)}
+#teklif-cta .cta-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(4,7,11,.94) 0%,rgba(4,7,11,.72) 55%,rgba(4,7,11,.45) 100%)}
+#teklif-cta .wrap{position:relative;z-index:1}
