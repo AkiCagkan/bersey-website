@@ -214,3 +214,26 @@ body.reduced [data-rv],.no-js [data-rv]{opacity:1!important;transform:none!impor
   [data-rv]{opacity:1!important;transform:none!important}
   #hero{height:100vh}
 }
+
+/* ---- Coğrafi Varlık Haritası ---- */
+#cografya .geo-box{position:relative;margin-top:38px;background:var(--panel);
+  border:1px solid var(--line);border-radius:16px;padding:18px;overflow:hidden}
+.geo-svg{width:100%;height:auto;display:block}
+.m-land{fill:var(--panel2);stroke:rgba(232,238,244,.10);stroke-width:.5;transition:fill .3s}
+.m-land.m-active{fill:rgba(242,140,40,.16);stroke:rgba(242,140,40,.45)}
+.m-land.m-active:hover{fill:rgba(242,140,40,.30)}
+.m-arc{fill:none;stroke:var(--acc);stroke-width:.7;stroke-opacity:.4;
+  stroke-dasharray:3 4;animation:arcflow 2.6s linear infinite}
+@keyframes arcflow{to{stroke-dashoffset:-14}}
+.m-dot{fill:var(--acc)}
+.m-halo{fill:none;stroke:var(--acc);stroke-width:.8;opacity:.6;transform-origin:center;
+  animation:halopulse 2.2s ease-out infinite}
+.m-hub .m-halo{animation-duration:1.6s}
+@keyframes halopulse{0%{stroke-opacity:.7}70%{stroke-opacity:0}100%{stroke-opacity:0}}
+.m-marker{cursor:pointer}
+.geo-tip{position:absolute;transform:translate(-50%,-100%);background:var(--panel2);
+  border:1px solid var(--line);border-radius:10px;padding:8px 12px;display:flex;
+  align-items:center;gap:8px;pointer-events:none;white-space:nowrap;font-size:13.5px;z-index:5}
+.geo-tip img{width:18px;height:auto;border-radius:2px}
+.geo-tip b{font-weight:600}
+.geo-tip span{color:var(--mut)}

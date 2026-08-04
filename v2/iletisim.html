@@ -51,7 +51,12 @@
       <article class="card" data-rv>
         <h3 class="h3">Teklif / Bilgi Formu</h3>
         <p class="p">Formu doldurun, ekibimiz en kısa sürede dönüş yapsın.</p>
-        <form onsubmit="event.preventDefault();this.hidden=true;document.getElementById('iletisim-tesekkur').hidden=false;">
+        <form id="iletisim-form" action="https://formsubmit.co/info@berseykazan.com" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="_subject" value="Web Sitesi İletişim Formu — Yeni Mesaj">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_next" value="https://akicagkan.github.io/bersey-website/v2/iletisim.html?gonderildi=1">
           <p class="p"><label for="i-ad-soyad">Ad Soyad *</label><br><input type="text" id="i-ad-soyad" name="ad-soyad" required></p>
           <p class="p"><label for="i-eposta">E-posta *</label><br><input type="email" id="i-eposta" name="eposta" required></p>
           <p class="p"><label for="i-telefon">Telefon</label><br><input type="tel" id="i-telefon" name="telefon"></p>
@@ -68,7 +73,13 @@
           <p class="p"><button type="submit" class="btn" data-mag>Mesaj Gönder</button></p>
           <p class="p">Bilgileriniz gizli tutulacaktır ve sadece iletişim amacıyla kullanılacaktır.</p>
         </form>
-        <p class="p" id="iletisim-tesekkur" hidden><strong>Mesajınız alındı.</strong> En kısa sürede dönüş yapacağız. (Demo — form backend'i bağlanacak.)</p>
+        <p class="p" id="iletisim-tesekkur" hidden><strong>Mesajınız alındı.</strong> En kısa sürede dönüş yapacağız.</p>
+        <script>
+          if (new URLSearchParams(location.search).has('gonderildi')) {
+            document.getElementById('iletisim-form').hidden = true;
+            document.getElementById('iletisim-tesekkur').hidden = false;
+          }
+        </script>
       </article>
 
       <!-- İletişim bilgileri -->
