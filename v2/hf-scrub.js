@@ -64,7 +64,7 @@
     ticking = true;
     requestAnimationFrame(function () {
       ticking = false;
-      var p = Math.min(1, Math.max(0, (scrollY || 0) / (innerHeight * 2.2)));
+      var p = Math.min(1, Math.max(0, (scrollY || 0) / (innerHeight * 1.5)));
       var f = Math.min(N - 1, Math.round(p * (N - 1)));
       if (f !== current) { current = f; draw(f); }
     });

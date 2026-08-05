@@ -81,17 +81,59 @@
   const P = 16;
   svg.setAttribute('viewBox', `${x0 - P} ${y0 - P} ${x1 - x0 + 2 * P} ${y1 - y0 + 2 * P}`);
 
-  // Hub ağı: İstanbul'dan her ülkeye kavisli hat
+  // Hub ağı: İstanbul'dan her ülkeye kavisli hat — scroll'la merkezden uzar
   const gNet = document.createElementNS(NS, 'g');
   svg.appendChild(gNet);
+  const arcs = [];
   for (const cc in pts) {
     if (cc === 'TR') continue;
     const [x, y] = pts[cc];
     const mx = (hub[0] + x) / 2, my = Math.min(hub[1], y) - Math.abs(hub[0] - x) * 0.18 - 6;
     const path = document.createElementNS(NS, 'path');
     path.setAttribute('d', `M${hub[0]},${hub[1]} Q${mx},${my} ${x},${y}`);
-    path.setAttribute('class', 'm-arc');
+    path.setAttribute('class', 'm-arc m-grow');
     gNet.appendChild(path);
+    arcs.push(path);
+  }
+  // her yayın uzunluğunu ölç, başlangıçta gizle
+  arcs.forEach((p, i) => {
+    const len = p.getTotalLength();
+    p.dataset.len = len;
+    p.style.strokeDasharray = len;
+    p.style.strokeDashoffset = len;
+  });
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    arcs.forEach(p => { p.classList.remove('m-grow'); p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; });
+  } else {
+    let tickingArc = false;
+    const arcScroll = () => {
+      if (tickingArc) return;
+      tickingArc = true;
+      requestAnimationFrame(() => {
+        tickingArc = false;
+        const r = host.getBoundingClientRect();
+        const pr = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * 0.55 + r.height * 0.55)));
+        arcs.forEach((p, i) => {
+          const d = (i / arcs.length) * 0.45;               // sıralı başlangıç
+          const t = Math.min(1, Math.max(0, (pr - d) / 0.55));
+          if (t >= 1) {
+            if (p.classList.contains('m-grow')) {           // tam uzadı → akan çizgiye dön
+              p.classList.remove('m-grow');
+              p.style.strokeDasharray = ''; p.style.strokeDashoffset = '';
+            }
+          } else {
+            if (!p.classList.contains('m-grow')) {
+              p.classList.add('m-grow');
+              p.style.strokeDasharray = p.dataset.len;
+            }
+            p.style.strokeDashoffset = p.dataset.len * (1 - t);
+          }
+        });
+      });
+    };
+    addEventListener('scroll', arcScroll, { passive: true });
+    arcScroll();
   }
 
   // İşaretçiler + etiketler

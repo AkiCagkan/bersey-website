@@ -232,6 +232,7 @@ body.reduced [data-rv],.no-js [data-rv]{opacity:1!important;transform:none!impor
 .m-land.m-active:hover{fill:rgba(0,160,227,.30)}
 .m-arc{fill:none;stroke:var(--acc);stroke-width:.7;stroke-opacity:.4;
   stroke-dasharray:3 4;animation:arcflow 2.6s linear infinite}
+.m-arc.m-grow{animation:none;stroke-opacity:.8;stroke-width:.9}
 @keyframes arcflow{to{stroke-dashoffset:-14}}
 .m-dot{fill:var(--acc)}
 .m-halo{fill:none;stroke:var(--acc);stroke-width:.8;opacity:.6;transform-origin:center;
