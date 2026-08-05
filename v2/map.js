@@ -113,9 +113,19 @@
     dot.setAttribute('cx', x); dot.setAttribute('cy', y); dot.setAttribute('r', cc === 'TR' ? 3.4 : 2.4);
     dot.setAttribute('class', 'm-dot');
     g.appendChild(halo); g.appendChild(dot);
+    /* ülke simgesi: Higgsfield neon landmark ikonu (siyah fon, screen blend) */
+    const assetBase = LANG === 'tr' ? '../assets' : '../../assets';
+    const LM = cc === 'TR' ? 16 : 12;
+    const lm = document.createElementNS(NS, 'image');
+    lm.setAttribute('href', `${assetBase}/images/landmarks/${cc.toLowerCase()}.webp`);
+    lm.setAttribute('x', x - LM / 2); lm.setAttribute('y', y - LM - (cc === 'TR' ? 5 : 4));
+    lm.setAttribute('width', LM); lm.setAttribute('height', LM);
+    lm.setAttribute('class', 'm-lm');
+    g.appendChild(lm);
     g.addEventListener('mouseenter', () => {
-      const flagBase = LANG === 'tr' ? '../assets' : '../../assets';
-      tip.innerHTML = `<img src="${flagBase}/images/flags/${cc.toLowerCase()}.png" alt="">` +
+      const flagBase = assetBase;
+      tip.innerHTML = `<img class="lm" src="${assetBase}/images/landmarks/${cc.toLowerCase()}.webp" alt="">` +
+        `<img src="${flagBase}/images/flags/${cc.toLowerCase()}.png" alt="">` +
         `<b>${d.ad}</b><span>${d.proje ? L.proje(d.proje) : L.pazar}</span>`;
       tip.hidden = false;
       const r = dot.getBoundingClientRect(), h = host.getBoundingClientRect();
