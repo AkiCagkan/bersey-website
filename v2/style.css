@@ -4,7 +4,8 @@
    ═══════════════════════════════════════════════════════════════ */
 :root{
   --bg:#04070B; --panel:#080E15; --panel2:#0C141D; --line:rgba(232,238,244,.08);
-  --ink:#E8EEF4; --mut:#8A98A6; --acc:#F28C28; --acc-ink:#0B0500;
+  --ink:#E8EEF4; --mut:#8A98A6; --acc:#00A0E3; --acc-ink:#04121C;
+  --acc2:#7FD4FF; --heat:#F28C28; /* --heat: yalnız alev/ısı bağlamında mikro-vurgu */
   --dsp:'Space Grotesk','Segoe UI',Arial,sans-serif;
   --body:'Inter','Segoe UI',Arial,sans-serif;
 }
@@ -220,8 +221,8 @@ body.reduced [data-rv],.no-js [data-rv]{opacity:1!important;transform:none!impor
   border:1px solid var(--line);border-radius:16px;padding:18px;overflow:hidden}
 .geo-svg{width:100%;height:auto;display:block}
 .m-land{fill:var(--panel2);stroke:rgba(232,238,244,.10);stroke-width:.5;transition:fill .3s}
-.m-land.m-active{fill:rgba(242,140,40,.16);stroke:rgba(242,140,40,.45)}
-.m-land.m-active:hover{fill:rgba(242,140,40,.30)}
+.m-land.m-active{fill:rgba(0,160,227,.16);stroke:rgba(0,160,227,.45)}
+.m-land.m-active:hover{fill:rgba(0,160,227,.30)}
 .m-arc{fill:none;stroke:var(--acc);stroke-width:.7;stroke-opacity:.4;
   stroke-dasharray:3 4;animation:arcflow 2.6s linear infinite}
 @keyframes arcflow{to{stroke-dashoffset:-14}}

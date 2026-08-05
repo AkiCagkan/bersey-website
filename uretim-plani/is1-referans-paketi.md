@@ -68,10 +68,11 @@ aydınlatması, metalik yüzeylerde gerçekçi yansıma, kamera yatay orbit (~30
 3. 122 kareye tamamla/kırp, aynı adlarla klasöre koy, faz yazılarını güncelle, yerelde test
 4. B ve C için tekrarla. Tahmini toplam: **~20-60 kredi** (Kling yeterse), tavan ~200 (Veo'ya çıkılırsa)
 
-## Ali Bey'den beklenenler
+## Kararlar (5 Ağustos 2026 — Ali Bey "onay her şeye" dedi, öneriler geçerli)
 
-- [ ] "Bersey Resimler" + "Bersey Documents" zip'leri Desktop'a indirildi mi?
-- [ ] A için ürün onayı (öneri: katı yakıtlı KYK, Krasny Yakor BRV-8000 geometrisi)
-- [ ] B için ürün onayı (öneri: ızgaralı yakma)
-- [ ] C onayı (öneri: eşanjör)
-- [ ] Explode mu, sadece orbit mi?
+- [x] A: katı yakıtlı KIZGIN YAĞ KAZANI — Krasny Yakor BRV-8000 geometrisi ONAYLI
+- [x] B: IZGARALI YAKMA ONAYLI
+- [x] C: EŞANJÖR ONAYLI
+- [x] Kamera: SADECE ORBIT (explode yok) ONAYLI
+- [ ] "Bersey Resimler" zip'i hâlâ bekleniyor (İş 2 için; üretim için şart değil)
+- [ ] Üretim: Higgsfield araçlı YENİ oturumda yapılacak (bu oturuma araçlar yansımıyor)
