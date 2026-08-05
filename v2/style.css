@@ -217,7 +217,9 @@ body.reduced [data-rv],.no-js [data-rv]{opacity:1!important;transform:none!impor
 }
 
 /* ---- Coğrafi Varlık Haritası ---- */
-#cografya .geo-box{position:relative;margin-top:38px;background:var(--panel);
+#cografya .geo-box{position:relative;margin-top:38px;
+  background:linear-gradient(rgba(6,10,16,.72),rgba(6,10,16,.86)),
+             url(../assets/images/fonlar/fon-siluet.webp) center/cover no-repeat,var(--panel);
   border:1px solid var(--line);border-radius:16px;padding:18px;overflow:hidden}
 .geo-svg{width:100%;height:auto;display:block}
 .m-land{fill:var(--panel2);stroke:rgba(232,238,244,.10);stroke-width:.5;transition:fill .3s}
