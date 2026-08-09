@@ -6,8 +6,8 @@
   --bg:#04070B; --panel:#080E15; --panel2:#0C141D; --line:rgba(232,238,244,.08);
   --ink:#E8EEF4; --mut:#8A98A6; --acc:#00A0E3; --acc-ink:#04121C;
   --acc2:#7FD4FF; --heat:#F28C28; /* --heat: yalnız alev/ısı bağlamında mikro-vurgu */
-  --dsp:'Space Grotesk','Segoe UI',Arial,sans-serif;
-  --body:'Inter','Segoe UI',Arial,sans-serif;
+  --dsp:'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --body:'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:auto}
@@ -257,3 +257,7 @@ body.reduced [data-rv],.no-js [data-rv]{opacity:1!important;transform:none!impor
 .vidgrid video{width:100%;display:block;border-radius:12px;border:1px solid var(--line);background:#000}
 .vidgrid figcaption{color:var(--mut);font-size:13.5px;margin-top:8px}
 @media(max-width:760px){.vidgrid{grid-template-columns:1fr}}
+
+/* logo amblem */
+#hd .wm,#bar .wm{display:inline-flex;align-items:center;gap:10px}
+.wm-a{display:block;width:26px;height:26px}
