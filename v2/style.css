@@ -263,3 +263,5 @@ body.reduced [data-rv],.no-js [data-rv]{opacity:1!important;transform:none!impor
 .wm-a{display:block;height:40px;width:auto}
 
 .lang-sw .fl{display:inline-block;width:17px;height:12px;object-fit:cover;border-radius:2px;vertical-align:-1px;margin-right:5px}
+
+#footer .mega img{width:min(860px,88vw);height:auto;display:block}
