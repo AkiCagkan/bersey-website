@@ -26,7 +26,9 @@
     if (j >= 0) img = frames[j];
     if (!img) return;
     var cw = canvas.width, ch = canvas.height,
-        s = Math.max(cw / img.naturalWidth, ch / img.naturalHeight),
+        dpr = Math.min(devicePixelRatio || 1, 2),
+        cover = Math.max(cw / img.naturalWidth, ch / img.naturalHeight),
+        s = Math.min(cover, dpr), /* kaynak çözünürlüğün üstüne büyütme — netlik korunur */
         w = img.naturalWidth * s, h = img.naturalHeight * s;
     ctx.clearRect(0, 0, cw, ch);
     ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
