@@ -76,8 +76,8 @@ a{color:inherit}
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marq-track{display:flex;gap:60px;align-items:center;width:max-content;animation:marq 46s linear infinite}
-.marq-track img{height:34px;width:auto;filter:grayscale(1) brightness(4);opacity:.5}
-.marq-track img:hover{filter:none;opacity:1}
+.marq-track img{height:30px;width:auto;opacity:.6}
+.marq-track img:hover{opacity:1}
 @keyframes marq{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.marq-track{animation:none}}
 
