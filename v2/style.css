@@ -260,4 +260,4 @@ body.reduced [data-rv],.no-js [data-rv]{opacity:1!important;transform:none!impor
 
 /* logo amblem */
 #hd .wm,#bar .wm{display:inline-flex;align-items:center;gap:10px}
-.wm-a{display:block;width:26px;height:26px}
+.wm-a{display:block;height:30px;width:auto}
