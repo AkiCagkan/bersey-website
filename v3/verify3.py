@@ -13,6 +13,9 @@ WORD_OK = {
     'faz', 'phase', 'фаза', 'söküp', 'takın', 'сборку', 'разберите',
     # kaldırılan "Drag to rotate the model." + EN nav standardizasyonu (Production→Generation)
     'drag', 'rotate', 'model', 'production',
+    # yumuşatılan iddialı ifadeler (kusursuz→özenle, sektör lideri→önde gelen firmalar)
+    'kusursuz', 'flawlessly', 'безупречно', 'sektör', 'lideri', 'konumuna', 'gelindi',
+    'leader', 'sector', 'стала', 'лидером',
 }
 
 
@@ -40,6 +43,8 @@ def strip_scrub(html):
     html = re.sub(r'<p class="hsub">.*?</p>', ' ', html, flags=re.S)
     html = re.sub(r'<a class="btn ghost"[^>]*>.*?</a>', ' ', html, flags=re.S)
     html = re.sub(r'<section id="teklif-cta">.*?</section>', ' ', html, flags=re.S)
+    # hero başlıkları bilinçli yumuşatıldı (iddialı ifade talebi) — iki taraftan da çıkar
+    html = re.sub(r'<h1>.*?</h1>', ' ', html, flags=re.S)
     return html
 
 

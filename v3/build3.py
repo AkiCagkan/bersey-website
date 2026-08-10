@@ -35,6 +35,12 @@ SCRUB_HINT = re.compile(r'^(kaydır|scroll|прокрут|листа)', re.I)
 PAGE_CHAIN = ['enerji-uretimi', 'yakma-sistemleri', 'proses-ekipmanlari', 'muhendislik-hizmetleri']
 PN_LABEL = {'tr': ('Önceki', 'Sıradaki'), 'en': ('Previous', 'Next'), 'ru': ('Предыдущий', 'Следующий')}
 
+# aşırı iddialı hero başlığı ölçülü karşılıkla değişti (Ali Bey talebi, 10 Ağu)
+HERO_H1 = {
+    'en': 'Your reliable partner in <i>industrial energy</i>',
+    'ru': 'Надёжный партнёр в <i>промышленной энергетике</i>',
+}
+
 # anasayfa hero alt metnine üç dilde aynı kapanış cümlesi (TR karşılığı elle yazılan index.html'de)
 TURNKEY = {
     'en': 'Turnkey solutions for biomass, natural gas, and alternative-fuel power plants.',
@@ -98,8 +104,11 @@ def convert(rel: str) -> str:
                    '  <div class="wrap">\n' % (klass, assets, photo))
         if eyb:
             newhero += '    <p class="eyb">%s</p>\n' % eyb.group(1)
-        if h1:
-            newhero += '    <h1>%s</h1>\n' % h1.group(1)
+        h1txt = h1.group(1) if h1 else ''
+        if is_index:
+            h1txt = HERO_H1.get(lang, h1txt)
+        if h1txt:
+            newhero += '    <h1>%s</h1>\n' % h1txt
         if subtxt:
             newhero += '    <p class="sub">%s</p>' % subtxt
         newhero += cta + '\n  </div>\n</section>'
@@ -150,6 +159,17 @@ def convert(rel: str) -> str:
     html = re.sub(r'<section id="teklif-cta">.*?</section>\s*', '', html, flags=re.S)
     # footer'daki "Klasik Site" linki kaldırıldı (Ali Bey talebi, 10 Ağu)
     html = re.sub(r'\s*<a class="btn ghost" href="(?:\.\./)+(?:en/|ru/)?index\.html">[^<]*</a>', '', html)
+
+    # aşırı iddialı ifadeler ölçülü karşılıklarla değişti (Ali Bey talebi, 10 Ağu)
+    html = (html.replace('kusursuz birleşir', 'özenle birleştirilir')
+                .replace('fits together flawlessly', 'assembled with care')
+                .replace('безупречно собирается воедино', 'тщательно собирается воедино')
+                .replace('sektör lideri konumuna gelindi',
+                         'sektörün önde gelen firmaları arasına girildi')
+                .replace('became a sector leader in biomass energy systems',
+                         'became one of the leading companies in biomass energy systems')
+                .replace('Компания стала лидером отрасли',
+                         'Компания вошла в число ведущих компаний отрасли'))
 
     # ürün/hizmet sayfaları arası Önceki/Sıradaki geçişi
     if name in PAGE_CHAIN:
