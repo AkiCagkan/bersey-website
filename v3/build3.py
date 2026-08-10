@@ -148,6 +148,8 @@ def convert(rel: str) -> str:
 
     # "Teklif Alın" koyu bandı kaldırıldı (Ali Bey talebi, 10 Ağu) — iletişim sayfası ve nav butonu duruyor
     html = re.sub(r'<section id="teklif-cta">.*?</section>\s*', '', html, flags=re.S)
+    # footer'daki "Klasik Site" linki kaldırıldı (Ali Bey talebi, 10 Ağu)
+    html = re.sub(r'\s*<a class="btn ghost" href="(?:\.\./)+(?:en/|ru/)?index\.html">[^<]*</a>', '', html)
 
     # ürün/hizmet sayfaları arası Önceki/Sıradaki geçişi
     if name in PAGE_CHAIN:

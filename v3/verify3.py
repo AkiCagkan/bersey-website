@@ -52,7 +52,8 @@ def check(rel):
         prob.append('KAYIP GÖRSEL: ' + ', '.join(sorted(mi)))
     hi = {x for x in hrefs(a) - hrefs(b)
           if not x.startswith(('https://cdnjs', 'https://cdn.jsdelivr'))
-          and 'style.css' not in x}
+          and 'style.css' not in x
+          and not re.fullmatch(r'(\.\./)+(en/|ru/)?index\.html', x)}  # kaldırılan Klasik Site linki
     if hi:
         prob.append('KAYIP LİNK: ' + ', '.join(sorted(hi)))
     wi = {w for w in words(strip_scrub(a)) - words(strip_scrub(b))
