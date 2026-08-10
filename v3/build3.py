@@ -31,6 +31,10 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
 
 SCRUB_HINT = re.compile(r'^(kaydır|scroll|прокрут|листа)', re.I)
 
+# ürün/hizmet sayfaları arası zarif geçiş zinciri (Ali Bey talebi, 10 Ağu)
+PAGE_CHAIN = ['enerji-uretimi', 'yakma-sistemleri', 'proses-ekipmanlari', 'muhendislik-hizmetleri']
+PN_LABEL = {'tr': ('Önceki', 'Sıradaki'), 'en': ('Previous', 'Next'), 'ru': ('Предыдущий', 'Следующий')}
+
 # anasayfa hero alt metnine üç dilde aynı kapanış cümlesi (TR karşılığı elle yazılan index.html'de)
 TURNKEY = {
     'en': 'Turnkey solutions for biomass, natural gas, and alternative-fuel power plants.',
@@ -47,7 +51,7 @@ def convert(rel: str) -> str:
 
     # head: fontlar + v3 stili
     html = re.sub(r'<link rel="stylesheet" href="((?:\.\./)?)style\.css\?v=\d+">',
-                  lambda m: FONTS + '<link rel="stylesheet" href="%sstyle.css?v=1">' % m.group(1),
+                  lambda m: FONTS + '<link rel="stylesheet" href="%sstyle.css?v=2">' % m.group(1),
                   html)
     html = (html.replace('BERSEY v2', 'BERSEY').replace('BERSEY MONOLITH', 'BERSEY')
                 .replace('Konsept v2', 'Konsept v3')
@@ -118,7 +122,7 @@ def convert(rel: str) -> str:
                 r'<script src="[^"]*boiler3d\.js[^"]*"[^>]*></script>\s*'):
         html = re.sub(pat, '', html)
     html = re.sub(r'<script src="((?:\.\./)?)app\.js\?v=\d+"></script>',
-                  r'<script src="\1app.js?v=1"></script>', html)
+                  r'<script src="\1app.js?v=2"></script>', html)
 
     # ── içerik cilası (QA bulguları — kalıcı kurallar) ──
     # artık var olmayan 3D etkileşimine işaret eden CTA/cümleler
@@ -141,6 +145,26 @@ def convert(rel: str) -> str:
         for n in ('6', '2004', '2025'):
             html = html.replace('<div class="stat" data-rv><b data-count="%s">' % n,
                                 '<div class="stat raw" data-rv><b data-count="%s">' % n)
+
+    # "Teklif Alın" koyu bandı kaldırıldı (Ali Bey talebi, 10 Ağu) — iletişim sayfası ve nav butonu duruyor
+    html = re.sub(r'<section id="teklif-cta">.*?</section>\s*', '', html, flags=re.S)
+
+    # ürün/hizmet sayfaları arası Önceki/Sıradaki geçişi
+    if name in PAGE_CHAIN:
+        lang = rel.split('/')[0] if '/' in rel else 'tr'
+        i = PAGE_CHAIN.index(name)
+        prv, nxt = PAGE_CHAIN[i - 1], PAGE_CHAIN[(i + 1) % len(PAGE_CHAIN)]
+
+        def navlabel(target):
+            m2 = re.search(r'<a href="%s\.html"[^>]*>(.*?)</a>' % target, html)
+            return re.sub(r'<[^>]+>', '', m2.group(1)).strip() if m2 else target
+
+        pl, nl = PN_LABEL.get(lang, PN_LABEL['tr'])
+        block = ('<section class="pagenav"><div class="wrap">\n'
+                 '  <a class="pn prev" href="%s.html"><span>← %s</span><b>%s</b></a>\n'
+                 '  <a class="pn next" href="%s.html"><span>%s →</span><b>%s</b></a>\n'
+                 '</div></section>\n\n' % (prv, pl, navlabel(prv), nxt, nl, navlabel(nxt)))
+        html = html.replace('<footer id="footer">', block + '<footer id="footer">', 1)
 
     out = V3 / rel
     out.parent.mkdir(parents=True, exist_ok=True)

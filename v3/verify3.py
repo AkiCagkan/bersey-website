@@ -35,10 +35,11 @@ def words(html):
 
 
 def strip_scrub(html):
-    """bilinçli kaldırılan animasyon anlatımı: faz altyazıları + hsub + kart CTA etiketleri"""
+    """bilinçli kaldırılan bloklar: animasyon anlatımı + Ali Bey'in kaldırttığı teklif-cta bandı"""
     html = re.sub(r'<div class="scrub-phases"[^>]*>.*?</div>', ' ', html, flags=re.S)
     html = re.sub(r'<p class="hsub">.*?</p>', ' ', html, flags=re.S)
     html = re.sub(r'<a class="btn ghost"[^>]*>.*?</a>', ' ', html, flags=re.S)
+    html = re.sub(r'<section id="teklif-cta">.*?</section>', ' ', html, flags=re.S)
     return html
 
 
