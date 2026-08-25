@@ -268,7 +268,7 @@ form label{color:var(--ink);font-weight:600;font-size:14px}
 @media(max-width:1080px){.hstrip{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.hstrip{grid-template-columns:repeat(2,1fr)}}
 .hitem{margin:0}
-.hitem img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;
+.hitem img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:12px;
   transition:transform .35s,box-shadow .35s}
 .hitem:hover img{transform:translateY(-3px);box-shadow:var(--shadow)}
 .hitem figcaption{margin-top:8px;font-size:12.5px;color:var(--mut);letter-spacing:.02em;
